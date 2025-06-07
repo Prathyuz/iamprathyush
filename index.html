@@ -3,13 +3,30 @@
 
 <head>
   <meta charset="UTF-8" />
-  <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <base href="/" />
-    <title >Hi , Nice to meet you..</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <link rel="icon" type="image/png" href="/logo1.png" />
+  <title>Hi, Nice to meet you</title>
+  <!-- Preload important resources -->
+  <link rel="preload" href="/src/main.jsx" as="script">
+</head>
+
+<body>
+  <noscript>
+    <div style="text-align: center; padding: 2rem;">
+      <h1>JavaScript is required to run this application</h1>
+      <p>Please enable JavaScript in your browser settings</p>
+    </div>
+  </noscript>
+  <div id="root"></div>
+  <!-- Fallback for script loading -->
+  <script>
+    window.addEventListener('error', function (e) {
+      var root = document.getElementById('root');
+      if (root && e.message.includes('main.jsx')) {
+        root.innerHTML = '<h1>Failed to load application</h1><p>Please refresh or try again later</p>';
+      }
+    });
+  </script>
+</body>
+
 </html>
